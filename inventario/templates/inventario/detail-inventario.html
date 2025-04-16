@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container" style="padding-top: 16px;">
+    <div class="cell-x callout secondary">
+        <h1>{{ equipo.descripcion }}</h1>
+        <table>
+            <tr>
+                <td width="300"># serie</td>
+                <td>{{ equipo.no_serie }}</td>
+            </tr>
+            <tr>
+                <td>Descripción</td>
+                <td>{{ equipo.descripcion }}</td>
+            </tr>
+            <tr>
+                <td>Marca</td>
+                <td>{{ equipo.marca }}</td>
+            </tr>
+            <tr>
+                <td>Modelo</td>
+                <td>{{ equipo.modelo }}</td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td>{{ equipo.color }}</td>
+            </tr>
+            <tr>
+                <td>Estado físico</td>
+                <td>{{ equipo.estado_fisico }}</td>
+            </tr>
+            <tr>
+                <td># Factura</td>
+                <td>{{ equipo.num_factura }}</td>
+            </tr>
+            <tr>
+                <td>Nombre resguardiante</td>
+                <td>{{ equipo.nombre_resguardante }}</td>
+            </tr>
+            <tr>
+                <td>Observaciones</td>
+                <td>{{ equipo.observaciones }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+<!-- head para PC -->
+{% extends 'base.html' %}
+{% load  static %}
+
+{% block content %}
+
+<div class="grid-container">
+    <div class="grid-x align-center align-middle" style="min-height: 95vh;">
+        <div class="cell medium-6 large-4">
+            <div class="card" style="width: 100%;">
+                
+                {% if messages %}
+                    
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                        
+                {% endif %}
+                    
+                <div class="card-divider">
+                  <h4>Acceso de usuario</h4>
+                </div>
+                <div class="card-section">
+                    <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="cell medium-12">
+                            <label>Usuario:
+                            {{ form.username }}
+                            </label>
+                        </div>
+                        <div class="cell medium-12">
+                            <label>Contraseña:
+                            {{ form.password }}
+                            </label>
+                        </div>
+                        <button type="submit" class="cell hollow button alert">Acceder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

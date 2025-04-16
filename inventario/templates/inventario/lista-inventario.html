@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <h1>Inventario</h1>
+
+    <!-- bloque de buscador -->
+    <form class=" grid-x input-group align-center" method="GET">
+        {% csrf_token %}
+        <div class="cell small-6 medium-4">
+            <input class="input-group-field" type="text" id="kword" name="kword" placeholder="Buscar ...">
+          </div>
+        <div>
+          <input type="submit" class="boton-sec buscador" value="Buscar">
+        </div>
+    </form>
+    <!-- FIN bloque de formulario -->
+
+    <table class="unstriped">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Marca</th>
+            <th width="150">Modelo</th>
+            <th width="150"># serie</th>
+            <th>Nombre resguardiante</th>
+            <th class="th-opc">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            {% for inventario in inventarios %}
+            <tr>
+                <td>{{ inventario.descripcion }}</td>
+                <td>{{ inventario.marca }}</td>
+                <td>{{ inventario.modelo }}</td>
+                <td>{{ inventario.no_serie }}</td>
+                <td>{{ inventario.nombre_resguardante }}</td>
+                <td>
+                    <div class="form-opc">
+                      <a href="{% url 'inventario_app:detalle-equipo' inventario.id %}"><i class="fa-solid fa-eye"></i></a>
+                      <a href="{% url 'inventario_app:reporte_equipo' inventario.id %}"><i class="fa-solid fa-file-pdf" style="color: red;"></i></a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+                
+        </tbody>
+      </table>    
+      
+    <!-- inicio de bloque de paginacion -->
+    <div class="cell text-right">
+        {% if is_paginated %}
+      <nav aria-label="Pagination">
+        <ul class="pagination">
+
+          {% if page_obj.has_previous %}
+          <li class="pagination-previous"><a href="?page={{page_obj.previous_page_number}}">Atrás</a><span
+              class="show-for-sr">page</span></li>
+          {% endif %}
+
+
+          {% for pagina in paginator.page_range %}
+
+          {% if pagina == page_obj.number  %} 
+            <li class="current" style="background-color: #611232;"><span class="show-for-sr">You're on page</span> {{ pagina }}</li>
+          {% else %}
+          <li><a href="?page={{pagina}}">{{ pagina }}</a></li>
+          {% endif %}
+            
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <li class="pagination-next"><a href="?page={{page_obj.next_page_number}}">Siguiente<span class="show-for-sr">page</span></a></li>
+          {% endif %}
+
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+ 
+</div>
+
+{% endblock %}

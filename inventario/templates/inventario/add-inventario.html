@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <h1>Nuevo registro</h1>
+    <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="cell large-12">
+            <label>Descripción:
+            {{ form.descripcion }}
+            </label>
+        </div>
+        <div class="cell large-4">
+            <label>Marca:
+                {{ form.marca }}
+            </label>
+        </div>
+        <div class="cell medium-4">
+            <label>Modelo:
+                {{ form.modelo }}
+            </label>
+        </div>
+        <div class="cell medium-4">
+            <label>Serie:
+                {{ form.no_serie }}
+            </label>
+        </div>
+        <div class="cell medium-4">
+            <label>Color:
+                {{ form.color }}
+            </label>
+        </div>
+        <div class="cell medium-4">
+            <label>Estado físico:
+                {{ form.estado_fisico }}
+            </label>
+        </div>
+        <div class="cell medium-4">
+            <label>Factura:
+                {{ form.num_factura }}
+            </label>
+        </div>
+        <div class="cell medium-12">
+            <label>Nombre resguardante:
+                {{ form.nombre_resguardante }}
+            </label>
+        </div>
+        <div class="cell medium-12">
+            <label>Observaciones:
+                {{ form.observaciones }}
+            </label>
+        </div>
+        <div class="cell medium-12" style="text-align: center;">
+            <button type="submit" class="boton-sec">Registrar</button>
+        </div>
+    </form> 
+ 
+</div>
+
+{% endblock %}

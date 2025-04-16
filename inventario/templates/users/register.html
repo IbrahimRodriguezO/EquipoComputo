@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Añadir usuario
+{% endblock title %}
+
+
+{% block content %}
+    {% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell medium-10 large-6" style="margin-top: 2em;">
+                <div class="card" style="width: 100%;">
+                    <div class="card-divider">
+                      <h4>Ingrese sus datos</h4>
+                    </div>
+                    <div class="card-section">
+                        <form class="grid-x grid-margin-x" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+    
+                            <div class="cell medium-6">
+                                <label>Nombres:
+                                    {{ form.nombres }}
+                                </label>
+                            </div>
+                            <div class="cell medium-6">
+                                <label>Apellidos:
+                                    {{ form.apellidos }}
+                                </label>
+                            </div>
+                            <div class="cell large-12">
+                                <label>Username:
+                                {{ form.username }}
+                                </label>
+                            </div>
+                            <div class="cell large-12">
+                                <label>Email:
+                                    {{ form.email }}
+                                </label>
+                            </div>
+                            <div class="cell medium-6">
+                                <label>Rol:
+                                    {{ form.role }}
+                                </label>
+                            </div>
+                            <div class="cell medium-3">
+                                <label>Admin:
+                                    {{ form.is_staff }}
+                                </label>
+                            </div>
+                            <div class="cell medium-3">
+                                <label>Activo:
+                                {{ form.is_active }}
+                                </label>
+                            </div>
+                            <div class="cell large-12">
+                                <label>Contraseña:
+                                {{ form.password1 }}
+                                </label>
+                            </div>
+                            <div class="cell large-12">
+                                <label>Repetir contraseña:
+                                {{ form.password2 }}
+                                </label>
+                            </div>
+                            <div class="cell large-12" style="text-align: center;">
+                                <button type="submit" class="boton-sec">Registrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock content %}
+    
